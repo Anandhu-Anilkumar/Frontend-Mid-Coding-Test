@@ -6,19 +6,41 @@
         @for (header of gridHeaders; track $index) {
           <th>{{ header | titlecase }}</th>
         }
+        <th>&nbsp;</th>
       </tr>
     </thead>
     <tbody>
       @for (item of gridData$ | async; track $index) {
-        <tr (click)="goToDetail($index, item)" style="cursor: pointer">
-          @for (header of gridHeaders; let i = $index; track i) {
-            <td>{{ item[header] }}</td>
-          }
-        </tr>
+      <tr>
+        @for (header of gridHeaders; let i = $index; track i) {
+          <td>{{ item[header] }}</td>
+        }
+        <td (click)="goToDetail($index, item)" style="cursor: pointer" title="View Details">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke="#0000ff"
+              stroke-linecap="round"
+              stroke-width="1.5"
+              d="M9 4.46A9.84 9.84 0 0 1 12 4c4.182 0 7.028 2.5 8.725 4.704C21.575 9.81 22 10.361 22 12c0 1.64-.425 2.191-1.275 3.296C19.028 17.5 16.182 20 12 20c-4.182 0-7.028-2.5-8.725-4.704C2.425 14.192 2 13.639 2 12c0-1.64.425-2.191 1.275-3.296A14.465 14.465 0 0 1 5 6.821"
+            />
+            <path
+              stroke="#0000ff"
+              stroke-width="1.5"
+              d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+            />
+          </svg>
+        </td>
+      </tr>
       } @empty {
-        <tr>
-          <td colspan="5">No data available</td>
-        </tr>
+      <tr>
+        <td colspan="5">No data available</td>
+      </tr>
       }
     </tbody>
   </table>
