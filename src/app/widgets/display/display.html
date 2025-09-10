@@ -10,12 +10,28 @@
       </tr>
     </thead>
     <tbody>
-      @for (item of gridData$ | async; track $index) {
+      @for (item of gridData$ | async; let rowIndex = $index; track rowIndex) {
       <tr>
         @for (header of gridHeaders; let i = $index; track i) {
-          <td>{{ item[header] }}</td>
+          <td>
+            @if (isEditing(rowIndex, header)) {
+              <input
+                #editInput
+                [value]="item[header]"
+                (blur)="saveEdit(rowIndex, header, editInput.value)"
+                (keyup.enter)="saveEdit(rowIndex, header, editInput.value)"
+                style="width: 100%; border: 1px solid #ccc; padding: 4px;">
+            } @else {
+              <span
+                (click)="isEditable(header) ? startEdit(rowIndex, header) : null"
+                [style.cursor]="isEditable(header) ? 'pointer' : 'default'"
+                [title]="isEditable(header) ? 'Click to edit' : ''">
+                {{ item[header] }}
+              </span>
+            }
+          </td>
         }
-        <td (click)="goToDetail($index, item)" style="cursor: pointer" title="View Details">
+        <td (click)="goToDetail(rowIndex, item)" style="cursor: pointer" title="View Details">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
