@@ -10,7 +10,7 @@
     </thead>
     <tbody>
       @for (item of gridData$ | async; track $index) {
-        <tr (click)="goToDetail($index)" style="cursor: pointer">
+        <tr (click)="goToDetail($index, item)" style="cursor: pointer">
           @for (header of gridHeaders; let i = $index; track i) {
             <td>{{ item[header] }}</td>
           }

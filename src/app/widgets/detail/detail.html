@@ -1,1 +1,9 @@
-<p>detail works!</p>
+<a routerLink="/">Go back to all users</a>
+<article>
+  @for (item of user | keyvalue; track $index) {
+    <div style="display: flex;">
+      <strong>{{ item.key | titlecase }}:</strong>
+      <span>{{ item.value }}</span>
+    </div>
+  }
+</article>

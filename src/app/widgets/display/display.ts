@@ -32,8 +32,8 @@ export class DisplayComponent implements OnInit {
     );
   }
 
-  goToDetail(index: number) {
-    this._router.navigate(['/detail', index + 1]);
+  goToDetail(index: number, data: GridData) {
+    this._router.navigate(['/detail', index + 1], { state: { user: data } });
   }
 }
 
