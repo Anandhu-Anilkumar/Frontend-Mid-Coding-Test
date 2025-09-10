@@ -1,1 +1,25 @@
-<p>display works!</p>
+<section>
+  <h2>All Users</h2>
+  <table>
+    <thead>
+      <tr>
+        @for (header of gridHeaders; track $index) {
+          <th>{{ header | titlecase }}</th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of gridData; track $index) {
+        <tr (click)="goToDetail($index)" style="cursor: pointer">
+          @for (header of gridHeaders; let $i = $index; track $i) {
+            <td>{{ item[header] }}</td>
+          }
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="5">No data available</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</section>
