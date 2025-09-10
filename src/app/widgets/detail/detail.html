@@ -1,9 +1,16 @@
-<a routerLink="/">Go back to all users</a>
-<article>
-  @for (item of user | keyvalue; track $index) {
-    <div style="display: flex;">
-      <strong>{{ item.key | titlecase }}:</strong>
-      <span>{{ item.value }}</span>
+<div class="user-detail">
+  <a routerLink="/" class="user-detail__back-link">&larr; Go back to all users</a>
+
+  <div class="user-detail__content">
+    <div class="user-detail__header">
+      <h1>User Details</h1>
     </div>
-  }
-</article>
+
+    @for (item of user | keyvalue; track $index) {
+      <div class="user-detail__field">
+        <span class="user-detail__field-label">{{ item.key | titlecase }}</span>
+        <span class="user-detail__field-value">{{ item.value }}</span>
+      </div>
+    }
+  </div>
+</div>

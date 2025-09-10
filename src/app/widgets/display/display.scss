@@ -1,0 +1,121 @@
+.user-listing {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  &__header {
+    margin-bottom: 2rem;
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #333;
+      margin: 0;
+    }
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    thead {
+      background: #f8f9fa;
+
+      th {
+        padding: 1rem;
+        text-align: left;
+        font-weight: 600;
+        color: #555;
+        border-bottom: 2px solid #e9ecef;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid #e9ecef;
+        transition: background-color 0.2s ease;
+
+        &:focus,
+        &:hover {
+          background-color: #f8f9fa;
+        }
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+
+      td {
+        padding: 1rem;
+        color: #333;
+        font-size: 0.875rem;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  &__cell {
+    &--editable {
+      cursor: pointer;
+      transition: color 0.2s ease;
+
+      &:focus,
+      &:hover {
+        color: #007bff;
+      }
+    }
+
+    &--editing {
+      input {
+        width: 100%;
+        border: 1px solid #007bff;
+        border-radius: 4px;
+        padding: 0.5rem;
+        font-size: 0.875rem;
+        outline: none;
+        background: #fff;
+
+        &:focus {
+          border-color: #0056b3;
+          box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+        }
+      }
+    }
+  }
+
+  &__action {
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+
+    &:focus,
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    svg {
+      transition: stroke 0.2s ease;
+    }
+
+    &:focus,
+    &:hover {
+      svg {
+        stroke: #0056b3;
+      }
+    }
+  }
+
+  &__empty {
+    text-align: center;
+    color: #6c757d;
+    font-style: italic;
+    padding: 2rem;
+  }
+}
